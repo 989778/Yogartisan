@@ -6,23 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yogartisan</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
   <style>
     :root {
       --menta: #f0acd6;
       --blanco: #ffffff;
       --gris-oscuro: #2f3e3e;
       --gris-claro: #f2f2f2;
-    }
-
-    .logo-principal {
-      width: 180px;
-      height: auto;
-      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
-      transition: transform 0.3s ease;
-    }
-
-    .logo-principal:hover {
-      transform: scale(1.08);
     }
 
     * {
@@ -48,6 +38,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
@@ -56,20 +47,27 @@
       color: var(--blanco);
     }
 
-    nav ul {
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: var(--blanco);
+      cursor: pointer;
+    }
+
+    .menu {
       list-style: none;
       display: flex;
       gap: 1.5rem;
     }
 
-    nav ul li a {
+    .menu li a {
       text-decoration: none;
       color: var(--blanco);
       font-weight: bold;
       transition: color 0.3s;
     }
 
-    nav ul li a:hover {
+    .menu li a:hover {
       color: var(--gris-claro);
     }
 
@@ -82,6 +80,7 @@
 
     header img {
       max-width: 150px;
+      height: auto;
       margin-bottom: 20px;
     }
 
@@ -110,6 +109,7 @@
       border-radius: 12px;
       margin-bottom: 2rem;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      text-align: justify;
     }
 
     .gallery {
@@ -120,6 +120,7 @@
 
     .gallery img {
       width: 100%;
+      height: auto;
       border-radius: 12px;
       transition: transform 0.4s ease;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -129,11 +130,27 @@
       transform: scale(1.05);
     }
 
+    p {
+      line-height: 1.6;
+      word-wrap: break-word;
+    }
+
     footer {
       background-color: var(--menta);
       color: var(--blanco);
       padding: 2rem 1rem;
       text-align: center;
+    }
+
+    .logo-principal {
+      width: 180px;
+      height: auto;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+      transition: transform 0.3s ease;
+    }
+
+    .logo-principal:hover {
+      transform: scale(1.08);
     }
 
     .whatsapp {
@@ -150,20 +167,70 @@
       z-index: 1000;
     }
 
-    @media(max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
       }
 
-      nav ul {
+      .menu {
         flex-direction: column;
-        gap: 10px;
+        width: 100%;
+        display: none;
         margin-top: 1rem;
+      }
+
+      .menu.active {
+        display: flex;
+      }
+
+      nav {
+        align-items: flex-start;
       }
 
       header {
         padding-top: 180px;
+      }
+
+      header h2 {
+        font-size: 1.2rem;
+      }
+
+      section h2 {
+        font-size: 1.6rem;
+      }
+
+      .info-box {
+        padding: 1.5rem;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav h1 {
+        font-size: 1.4rem;
+      }
+
+      header h2 {
+        font-size: 1rem;
+      }
+
+      section {
+        padding: 40px 15px;
+      }
+
+      section h2 {
+        font-size: 1.3rem;
+      }
+
+      .info-box {
+        padding: 1rem;
+      }
+
+      .logo-principal {
+        width: 130px;
       }
     }
   </style>
@@ -174,56 +241,51 @@
   <!-- Menú -->
   <nav>
     <h1>Yogartisan</h1>
-    <ul>
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul id="menu" class="menu">
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#beneficios">Beneficios</a></li>
       <li><a href="#galeria">Galería</a></li>
+      <li><a href="#investigacion">investigacion</a></li>
+      <li><a href="#Panel del consumidor">Panel del consumidor</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
 
   <!-- Encabezado -->
   <header id="inicio">
-   
     <img src="logo-transparente.png" alt="Logo Yogartisan" class="logo-principal" />
-
     <h2>Probióticos que nutren</h2>
   </header>
 
   <!-- Quiénes somos -->
   <section>
     <h2>Quiénes somos</h2>
-    <div class="info-box">
-      <p>Yogartisan surge como una respuesta innovadora a la creciente demanda de productos alimenticios que
-        promuevan el bienestar integral y el cuidado del medio ambiente. En un contexto donde los consumidores están
-        cada vez más conscientes de los efectos de su alimentación y sus decisiones de consumo, se vuelve esencial
-        ofrecer alternativas que no solo sean saludables, sino también responsables y sostenibles.</p>
-    </div>
-  </section>
-
-  <!-- Quiénes somos -->
-  <section>
-    <h2>Misión</h2>
-    <div class="info-box">
-      <p>Comercializar un yogur artesanal que nutra el cuerpo y respete al planeta, combinando tradición, salud y
-        sostenibilidad en cada frasco. En Yogartisan inspiramos hábitos conscientes con productos naturales, honestos y
-        hechos con amor.
-
-
+    <div>
+      <p>Yogartisan surge como una respuesta a la falta de opciones accesibles, naturales y locales que verdaderamente aporten probióticos reales. En un mercado dominado por yogures comerciales con aditivos artificiales y empaques plásticos, este proyecto ofrece una alternativa saludable y sustentable.
+        Ante el creciente interés de los consumidores por cuidar su salud digestiva y el medio ambiente, desarrollamos un yogur artesanal a base de búlgaros, sin conservadores, endulzado con fruta natural y envasado en frascos de vidrio retornables.
+        Yogartisan representa un emprendimiento con propósito: bienestar integral, compromiso ambiental y apoyo a la producción local.
       </p>
     </div>
   </section>
 
-  <!-- Quiénes somos -->
+  <!-- Misión -->
   <section>
-    <h2>Visión</h2>
+    <h2>Misión</h2>
     <div class="info-box">
-      <p> En el año 2030 ser la marca líder en yogures probióticos en el mercado regional, reconocida por su calidad,
-        innovación y compromiso con la salud y el entorno.
-        .</p>
+      <p>Comercializar un yogur artesanal que nutra el cuerpo y respete al planeta, combinando tradición, salud y sostenibilidad en cada frasco. En Yogartisan inspiramos hábitos conscientes con productos naturales, honestos y hechos con amor.</p>
     </div>
   </section>
 
+  <!-- Visión -->
+  <section>
+    <h2>Visión</h2>
+    <div class="info-box">
+      <p>En el año 2030 ser la marca líder en yogures probióticos en el mercado regional, reconocida por su calidad, innovación y compromiso con la salud y el entorno.</p>
+    </div>
+  </section>
 
   <!-- Beneficios -->
   <section id="beneficios">
@@ -249,24 +311,40 @@
     </div>
   </section>
 
-   <!-- Video -->
-  <section id="video">
-    <h2>Video</h2>
-    <div class="info-box" style="text-align: center; padding: 0;">
-      <iframe
-        style="border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);"
-        width="100%" height="315"
-        src="https://www.youtube.com/embed/ocqG157CWMM"
-        title="Video Yogartisan"
-        frameborder="0"
-        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+  <!-- Investigación de Mercado -->
+  <section id="investigacion">
+    <h2>Investigación de Mercado</h2>
+    <div class="info-box">
+      <p>
+        Nuestro enfoque fue cuantitativo y exploratorio, con el objetivo de validar la viabilidad del producto, conocer las preferencias del mercado y tomar decisiones basadas en datos reales.
+        Se aplicó una encuesta estructurada a 135 personas entre 20 y 60 años, enfocada en hábitos de consumo, percepción de productos naturales, disposición a pagar más por alimentos funcionales y aceptación de envases retornables.
+      </p>
+      <ul>
+        <li>✔️ Prefieren productos naturales sin conservadores.</li>
+        <li>✔️ Valoran envases retornables.</li>
+        <li>✔️ Pagarían más si obtienen beneficios funcionales.</li>
+        <li>✔️ Compran en mercados naturistas.</li>
+      </ul>
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="grafica.png" target="_blank">
+          <img src="grafica.png" alt="Gráfica de resultados de la encuesta" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); cursor: zoom-in;" />
+        </a>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: gray;">Haz clic en la imagen para verla en tamaño completo</p>
+      </div>
     </div>
   </section>
 
+  <!-- Panel del consumidor (video) -->
+  <section id="Panel del consumidor">
+    <h2>Panel del consumidor</h2>
+    <div class="info-box" style="padding: 0; overflow: hidden;">
+      <div style="position: relative; padding-bottom: 50%; height: 0;">
+        <iframe src="https://www.youtube.com/embed/ocqG157CWMM" title="Video Yogartisan"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
 
-  
   <!-- Contacto -->
   <section id="contacto">
     <h2>Contacto</h2>
@@ -286,6 +364,15 @@
   <a class="whatsapp" href="https://wa.me/5217752051025" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
+
+  <!-- JS menú hamburguesa -->
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+  </script>
 
 </body>
 

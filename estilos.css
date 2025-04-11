@@ -75,6 +75,24 @@ ul {
   animation: bounce 2s infinite;
 }
 
+@media (max-width: 480px) {
+  header h2 {
+    font-size: 1.2rem;
+  }
+
+  nav h1 {
+    font-size: 1.4rem;
+  }
+
+  .info-box, .gallery img {
+    padding: 1rem;
+  }
+
+  section h2 {
+    font-size: 1.5rem;
+  }
+}
+
 @keyframes fadeIn {
   from {opacity: 0; transform: translateY(-20px);}
   to {opacity: 1; transform: translateY(0);}
